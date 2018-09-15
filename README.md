@@ -4,6 +4,7 @@ This is an [info-beamer](https://info-beamer.com/) plugin displaying a simple te
 
 * [DejaVu fonts](https://packages.debian.org/stable/fonts-dejavu)
 * [Python](https://www.python.org/) 3
+* [gitdir](https://github.com/fenhl/gitdir)
 * [info-beamer-text](https://github.com/fenhl/info-beamer-text)
 * [timespec](https://github.com/fenhl/timespec)
 

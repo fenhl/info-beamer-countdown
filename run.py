@@ -5,6 +5,7 @@ import sys
 sys.path.append('/opt/py')
 
 import datetime
+import gitdir.host.github
 import pathlib
 import shutil
 import socket
@@ -17,7 +18,7 @@ NODE_DIR = pathlib.Path(__file__).parent
 if __name__ == '__main__':
     # copy dependencies into the node directory because some info-beamer versions don't support symlinks
     shutil.copy2('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', NODE_DIR / 'dejavu_sans.ttf')
-    shutil.copy2('/opt/git/github.com/fenhl/info-beamer-text/master/text.lua', NODE_DIR / 'text.lua')
+    shutil.copy2(gitdir.host.github.GitHub().repo('fenhl/info-beamer-text').branch_path() / 'text.lua', NODE_DIR / 'text.lua')
     # run node
     target_date = timespec.parse(sys.argv[1:])
     popen = subprocess.Popen(['info-beamer', str(NODE_DIR))
