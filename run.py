@@ -22,7 +22,8 @@ if __name__ == '__main__':
     # run node
     target_date = timespec.parse(sys.argv[1:])
     popen = subprocess.Popen(['info-beamer', str(NODE_DIR)])
-    time.sleep(1)
-    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
-        sock.sendto('countdown/delta/set:{}'.format((target_date - datetime.datetime.now(datetime.timezone.utc)).total_seconds()).encode('utf-8'), ('127.0.0.1', 4444))
+    for iteration in range(10):
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as sock:
+            sock.sendto('countdown/delta/set:{}'.format((target_date - datetime.datetime.now(datetime.timezone.utc)).total_seconds()).encode('utf-8'), ('127.0.0.1', 4444))
+        time.sleep(1)
     sys.exit(popen.wait())
